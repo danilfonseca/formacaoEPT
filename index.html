@@ -53,6 +53,11 @@ span.btn{background:var(--dis);color:var(--mu);font-weight:400}
 .topbar .back{margin:0}
 .help{display:inline-flex;align-items:center;gap:8px;background:var(--ye);color:#0a3442;border:2px solid var(--bd);border-radius:999px;padding:7px 18px;font:inherit;font-weight:600;cursor:pointer}
 a.help{text-decoration:none}
+.topact{display:flex;flex-direction:column;gap:8px;align-items:stretch}
+.topact .help{justify-content:center}
+.help.cad{background:var(--pk)}
+.help.cad svg{width:22px;height:22px}
+.help.cad:hover{background:var(--ye)}
 .help:hover{background:var(--gr)}
 .intro,.acesso{background:var(--card);border:2px solid var(--bd);border-radius:24px;padding:20px 22px;margin-bottom:16px;border-left:12px solid var(--pk)}
 .acesso{border-left-color:var(--gr)}
@@ -184,12 +189,20 @@ EIXOS.forEach(function(e){LINKS[e.nome][2][1]=[
  {nome:"Práticas",url:"https://ead.educacao.al.gov.br/mod/page/view.php?id=23431"},
  {nome:"Planejamento integrado",url:"https://ead.educacao.al.gov.br/mod/page/view.php?id=23521"}
 ]});
+/* Administração - Módulo 1, Unidade 1 */
+LINKS["Administração"][1][1]=[
+ {nome:"Metodologia Pedagógica",url:"https://ead.educacao.al.gov.br/mod/page/view.php?id=19642"},
+ {nome:"Práticas do Ensino Técnico",url:"https://ead.educacao.al.gov.br/mod/page/view.php?id=19572"},
+ {nome:"Planejamento Integrado",url:"https://ead.educacao.al.gov.br/mod/page/view.php?id=20901"},
+ {nome:"Residência Pedagógica",url:"https://ead.educacao.al.gov.br/mod/assign/view.php?id=21477"}
+];
 /* ===== FIM ===== */
 
 var estado={e:null,c:null,m:null};
 var $=function(i){return document.getElementById(i)};
 var IC_AJ='<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 8h4a2.5 2.5 0 1 1 5 0h5v5a2.5 2.5 0 1 1 0 5v2H5v-5a2.5 2.5 0 1 0 0-5z" fill="#f04770" stroke="#0a3442" stroke-width="1.6" stroke-linejoin="round"/><path d="M10.4 12.6a1.7 1.7 0 1 1 2.4 1.5c-.6.3-.8.7-.8 1.3" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="17.6" r=".9" fill="#fff"/></svg>';
 var IC_PD='<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#beeffc" stroke="#0a3442" stroke-width="1.6"/><path d="M7.8 12.4l2.6 2.6 5.8-6" fill="none" stroke="#0a3442" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+var IC_CAD='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="8" r="3.4" fill="#fff" stroke="#0a3442" stroke-width="1.6"/><path d="M3.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6z" fill="#fff" stroke="#0a3442" stroke-width="1.6" stroke-linejoin="round"/><path d="M19 6v6M16 9h6" stroke="#0a3442" stroke-width="2" stroke-linecap="round"/></svg>';
 function btnLink(href,txt){
   if(!href||href==="#")return '<span class="btn">'+txt+' (link a definir)</span>';
   return '<a class="btn" href="'+href+'" target="_blank" rel="noopener">'+txt+'</a>';
@@ -234,7 +247,7 @@ function render(){
       var l=ls.length?ls.map(function(k){return btnLink(k.url,k.nome)}).join(""):'<span class="btn">Em breve</span>';
       h+='<div class="unit"><h3>Unidade '+u+'</h3><div class="links">'+l+'</div></div>';
     }
-    v.innerHTML='<nav class="topbar"><button class="back" data-go="curso">← Voltar</button><button class="help" data-help="1">'+IC_AJ+'Preciso de ajuda</button></nav>'+h;
+    v.innerHTML='<nav class="topbar"><button class="back" data-go="curso">← Voltar</button><div class="topact"><a class="help cad" href="https://forms.gle/jNTxvBrNWYVYHmiu7" target="_blank" rel="noopener">'+IC_CAD+'Não tenho cadastro no Moodle</a><button class="help" data-help="1">'+IC_AJ+'Preciso de ajuda</button></div></nav>'+h;
   }
 }
 document.addEventListener("click",function(ev){
